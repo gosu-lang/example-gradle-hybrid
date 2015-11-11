@@ -1,0 +1,17 @@
+plugins {
+    id 'org.gosu-lang.gosu' version '0.1.2-alpha'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.gosu-lang.gosu:gosu-core-api:1.9.1'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+compileGosu {
+    gosuClasspath = tasks.getByName('compileJava').outputs.files
+}
