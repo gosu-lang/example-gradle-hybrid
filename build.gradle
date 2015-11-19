@@ -32,6 +32,22 @@ compileGosu {
     classpath = tasks.getByName('compileJava').outputs.files + classpath
 }
 
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    description 'generate javadoc'
+    from javadoc
+}
+
+task gosudocJar(type: Jar) {
+    classifier = 'gosudoc'
+    description 'generate gosudoc'
+    from gosudoc
+}
+
+artifacts {
+    archives javadocJar, gosudocJar
+}
+
 //don't cache snapshots
 configurations.all {
     resolutionStrategy {
