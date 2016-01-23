@@ -15,3 +15,6 @@ dependencies {
 compileGosu {
     classpath = tasks.getByName('compileJava').outputs.files + classpath
 }
+compileTestGosu {
+    classpath = tasks.getByName('compileTestJava').outputs.files + classpath
+}

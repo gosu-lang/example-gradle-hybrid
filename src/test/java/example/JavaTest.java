@@ -7,7 +7,7 @@ public class JavaTest {
 
   @Test
   public void noOpTest() {
-    System.out.println("Running test method: " + this.getClass().getMethods()[0]);
+    System.out.println("Running noOpTest from class: " + this.getClass().getName());
     assertTrue( 1 + 1 == 2);
   }
 
