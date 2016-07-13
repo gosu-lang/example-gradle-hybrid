@@ -5,7 +5,7 @@ uses example.Bar
 uses org.junit.Assert
 uses org.junit.Test
 
-class FooTest {
+class FooTest extends JavaTest {
 
   @Test
   function makeAFoo() {
