@@ -9,10 +9,15 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'org.gosu-lang.gosu:gradle-gosu-plugin:0.2.1-SNAPSHOT'
+        classpath 'org.gosu-lang.gosu:gradle-gosu-plugin:0.3.1-experimental-SNAPSHOT'
     }
 }
 apply plugin: 'org.gosu-lang.gosu'
+
+wrapper {
+    gradleVersion '3.5'
+}
+
 
 repositories {
     mavenLocal()
@@ -24,12 +29,30 @@ repositories {
 }
 
 dependencies {
-    compile 'org.gosu-lang.gosu:gosu-core-api:1.13.9'
+    compile 'org.gosu-lang.gosu:gosu-core-api:1-X-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-compileGosu {
-    classpath = tasks.getByName('compileJava').outputs.files + classpath
+sourceSets {
+    main {
+        java {
+            srcDirs = []
+        }
+        gosu {
+            srcDirs += 'src/main/java'
+            filter.include '**/*.java'
+        }
+    }
+    test {
+        java {
+            srcDirs = []
+        }
+        gosu {
+            srcDirs += 'src/test/java'
+            filter.include '**/*.java'
+        }
+    }
+    
 }
 
 task javadocJar(type: Jar) {
